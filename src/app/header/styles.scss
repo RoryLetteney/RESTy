@@ -1,10 +1,8 @@
 @import '../../variables.scss';
+@import '../../mixins.scss';
 
 header {
-  background-color: $darkBlue;
-  color: $ultraLightGrey;
-  height: 4rem;
-  line-height: 4rem;
+  @include headerAndFooter($darkBlue, $ultraLightGrey, 4rem);
   padding: 0 2rem;
 
   h1 {
