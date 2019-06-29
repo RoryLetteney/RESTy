@@ -3,11 +3,13 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Header from './header';
 
+import './styles.scss';
+
 function App() {
   return (
     <BrowserRouter>
       <Header>
-        <h2>RESTy</h2>
+        <h1>RESTy</h1>
       </Header>
     </BrowserRouter>
   );
