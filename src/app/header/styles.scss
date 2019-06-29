@@ -1,0 +1,14 @@
+@import '../../variables.scss';
+
+header {
+  background-color: $darkBlue;
+  color: $ultraLightGrey;
+  height: 4rem;
+  line-height: 4rem;
+  padding: 0 2rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
