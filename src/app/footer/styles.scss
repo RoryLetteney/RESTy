@@ -1,0 +1,8 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+footer {
+  @include headerAndFooter($darkerBlue, $ultraLightGrey, 2rem);
+  font-size: 0.75rem;
+  text-align: center;
+}
