@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import Header from './header';
+import Footer from './footer';
 
 import './styles.scss';
 
@@ -11,6 +12,11 @@ function App() {
       <Header>
         <h1>RESTy</h1>
       </Header>
+      <Footer>
+        <section>
+          <p>&copy;{new Date().getFullYear()} Code Fellows</p>
+        </section>
+      </Footer>
     </BrowserRouter>
   );
 }
