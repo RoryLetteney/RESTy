@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
 import HistoryItem from './historyItem';
+import Method from './method';
 
 import './styles.scss';
 
@@ -21,6 +22,23 @@ function App() {
             <HistoryItem method="GET" url="swapi.co" path="/api/starships" />
           </ul>
         </aside>
+        <section class="deck">
+          <form>
+            <section>
+              <input type="text" class="wide" name="url" placeholder="URL" />
+              <div id="methods">
+                <Method type="GET" />
+                <Method type="POST" />
+                <Method type="PUT" />
+                <Method type="PATCH" />
+                <Method type="DELETE" />
+                <label>
+                  <button type="submit">Go!</button>
+                </label>
+              </div>
+            </section>
+          </form>
+        </section>
       </main>
       <Footer>
         <section>
