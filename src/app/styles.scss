@@ -6,3 +6,10 @@
 body {
   font-family: Verdana,Geneva,Tahoma,sans-serif;
 }
+
+main {
+  margin: 1rem;
+  display: flex;
+  flex: 1 1;
+  min-height: calc(100vh - 8rem);
+}

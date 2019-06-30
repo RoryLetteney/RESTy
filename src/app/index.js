@@ -12,6 +12,9 @@ function App() {
       <Header>
         <h1>RESTy</h1>
       </Header>
+      <main>
+
+      </main>
       <Footer>
         <section>
           <p>&copy;{new Date().getFullYear()} Code Fellows</p>
