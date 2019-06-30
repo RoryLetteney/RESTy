@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Header from './header';
 import Footer from './footer';
+import HistoryItem from './historyItem';
 
 import './styles.scss';
 
@@ -16,7 +17,8 @@ function App() {
         <aside>
           <h2>History</h2>
           <ul id="history">
-
+            <HistoryItem method="GET" url="swapi.co" path="/api/people" />
+            <HistoryItem method="GET" url="swapi.co" path="/api/starships" />
           </ul>
         </aside>
       </main>
