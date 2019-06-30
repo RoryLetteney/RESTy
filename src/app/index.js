@@ -13,7 +13,12 @@ function App() {
         <h1>RESTy</h1>
       </Header>
       <main>
+        <aside>
+          <h2>History</h2>
+          <ul id="history">
 
+          </ul>
+        </aside>
       </main>
       <Footer>
         <section>
