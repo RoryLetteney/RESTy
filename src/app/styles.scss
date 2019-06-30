@@ -96,3 +96,17 @@ textarea {
     width: 100%;
   }
 }
+
+#json {
+  background-color: $ultraLightGrey;
+  border: 1px solid $darkGrey;
+  flex: 1 1;
+  flex-basis: 0;
+  overflow: auto;
+  padding: 1rem;
+
+  h3 {
+    font-size: 0.7rem;
+    cursor: pointer;
+  }
+}

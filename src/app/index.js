@@ -55,6 +55,14 @@ function App() {
               </div>
             </section>
           </form>
+          <div id="json">
+            <h3>Headers</h3>
+            <div id="response-headers">
+            </div>
+            <h3>Response</h3>
+            <div id="response-body">
+            </div>
+          </div>
         </section>
       </main>
       <Footer>
