@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+@media (min-width: 768px) {
+  li {
+    border: 1px groove $darkGrey;
+    color: $lightGrey;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding: 0.33rem;
+    border-radius: 3px;
+    background-color: $lightBlue;
+    line-height: 0.75rem;
+  }
+}
