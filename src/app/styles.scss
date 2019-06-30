@@ -58,3 +58,41 @@ input.wide {
     padding: 1px 6px;
   }
 }
+
+section.col-2 {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1rem 0;
+  
+  div {
+    width: calc(50% - 0.5rem);
+  }
+}
+
+textarea {
+  display: block;
+  height: 10rem;
+  width: 100%;
+  padding: 2px;
+}
+
+#headers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  h2 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  input {
+    padding: 1px;
+  }
+
+  div {
+    width: 100%;
+  }
+}

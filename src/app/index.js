@@ -37,6 +37,23 @@ function App() {
                 </label>
               </div>
             </section>
+            <section class="deck col-2">
+              <div id="body">
+                <textarea placeholder="Raw JSON Body" name="requestBody"></textarea>
+              </div>
+              <div id="headers">
+                <button>Headers</button>
+                <div class="visible-false">
+                  <h2>Basic Authorization</h2>
+                  <input name="authusername" placeholder="Username" />
+                  <input name="authpassword" type="authpassword" placeholder="Password" />
+                </div>
+                <div class="visible-false">
+                  <h2>Bearer Token</h2>
+                  <input tpye="text" class="wide" name="authtoken" placeholder="Bearer Token" />
+                </div>
+              </div>
+            </section>
           </form>
         </section>
       </main>
