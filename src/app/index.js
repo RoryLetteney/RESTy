@@ -8,29 +8,38 @@ import ApiCall from './apiCall';
 
 import './styles.scss';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Header>
-        <h1>RESTy</h1>
-      </Header>
-      <main>
-        <aside>
-          <h2>History</h2>
-          <ul id="history">
-            <HistoryItem method="GET" url="swapi.co" path="/api/people" />
-            <HistoryItem method="GET" url="swapi.co" path="/api/starships" />
-          </ul>
-        </aside>
-        <ApiCall />
-      </main>
-      <Footer>
-        <section>
-          <p>&copy;{new Date().getFullYear()} Code Fellows</p>
-        </section>
-      </Footer>
-    </BrowserRouter>
-  );
+class App extends React.Component {
+
+  constructor() {
+    super();
+
+    this.state = { history: localStorage['history'] };
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Header>
+          <h1>RESTy</h1>
+        </Header>
+        <main>
+          <aside>
+            <h2>History</h2>
+            <ul id="history">
+              <HistoryItem method="GET" url="swapi.co" path="/api/people" />
+              <HistoryItem method="GET" url="swapi.co" path="/api/starships" />
+            </ul>
+          </aside>
+          <ApiCall />
+        </main>
+        <Footer>
+          <section>
+            <p>&copy;{new Date().getFullYear()} Code Fellows</p>
+          </section>
+        </Footer>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
