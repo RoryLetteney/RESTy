@@ -2,11 +2,11 @@ import React from 'react';
 
 import './styles.scss';
 
-export default ({ method, url, path }) => {
+export default ({ method, host, path }) => {
   return (
     <li>
-      <span>{method}</span>
-      <span>{url}</span>
+      <span>{method.toUpperCase()}</span>
+      <span>{host}</span>
       <span>{path}</span>
     </li>
   )

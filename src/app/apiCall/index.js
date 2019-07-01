@@ -13,6 +13,8 @@ export default class ApiCall extends React.Component {
     this.state = {
       headers: null,
       body: null,
+      textareaDisabled: true,
+      method: 'get'
     };
   }
 
@@ -39,6 +41,28 @@ export default class ApiCall extends React.Component {
           .then(res => this.setState({ headers: JSON.stringify(res.headers), body: JSON.stringify(res.body.results) }));
     }
 
+    const splitURL = url.split('//')[1].split('/');
+    let history = localStorage.getItem('history') || [];
+    history = typeof history === 'string' ? JSON.parse(history) : history;
+    history.unshift({
+      id: uuid(),
+      method,
+      url,
+      host:
+        splitURL[0],
+      path: '/' + splitURL.slice(1).join('/')
+    });
+    localStorage['history'] = JSON.stringify(history);
+    this.props.updateHistory();
+  };
+
+
+  textareaDisable = async () => {
+    await this.setState({ textareaDisabled: true, method: 'get' });
+  }
+
+  textareaEnable = async () => {
+    await this.setState({ textareaDisabled: false, method: '' });
   }
 
   render() {
@@ -48,20 +72,20 @@ export default class ApiCall extends React.Component {
           <section>
             <input type="text" className="wide" name="url" placeholder="URL" />
             <div id="methods">
-              <Method uniqueId={uuid()} type="GET" />
-              <Method uniqueId={uuid()} type="POST" />
-              <Method uniqueId={uuid()} type="PUT" />
-              <Method uniqueId={uuid()} type="PATCH" />
-              <Method uniqueId={uuid()} type="DELETE" />
+              <Method uniqueId={uuid()} type="GET" onClick={this.textareaDisable} method={this.state.method} />
+              <Method uniqueId={uuid()} type="POST" onClick={this.textareaEnable} />
+              <Method uniqueId={uuid()} type="PUT" onClick={this.textareaEnable} />
+              <Method uniqueId={uuid()} type="PATCH" onClick={this.textareaEnable} />
+              <Method uniqueId={uuid()} type="DELETE" onClick={this.textareaEnable} />
               <input type="submit" value="Go!" />
             </div>
           </section>
           <section className="deck col-2">
             <div id="body">
-              <textarea placeholder="Raw JSON Body" name="requestBody"></textarea>
+              <textarea placeholder="Raw JSON Body" name="requestBody" disabled={this.state.textareaDisabled ? "disabled" : ""}></textarea>
             </div>
             <div id="headers">
-              <button>Headers</button>
+              <button type="button">Headers</button>
               <AuthDiv className="visible-false" title="Basic Authorization">
                 <input name="authusername" placeholder="Username" />
                 <input name="authpassword" type="authpassword" placeholder="Password" />
