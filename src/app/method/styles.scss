@@ -11,5 +11,10 @@
     cursor: pointer;
     padding: 0.25rem 1rem;
   }
+
+  input[type=radio]:checked ~ label {
+    background-color: $lightBlue;
+    color: $ultraLightGrey;
+  }
 }
 
