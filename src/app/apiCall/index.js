@@ -16,7 +16,7 @@ export default class ApiCall extends React.Component {
     };
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const form = e.target;
     const urlInput = form.children[0].children[0];
@@ -24,10 +24,21 @@ export default class ApiCall extends React.Component {
     methods = methods.slice(0, methods.length - 1);
     methods = methods.map(m => m.children[0]);
     const url = urlInput.value;
-    let method = methods.find(m => m.checked === true).value;
+    const method = methods.find(m => m.checked === true).value;
+    let data = form.children[1].children[0].children[0].value;
 
-    superagent(method, url)
-      .then(res => this.setState({ headers: JSON.stringify(res.headers), body: JSON.stringify(res.body.results) }));
+    switch (method) {
+      case 'get':
+        await superagent(method, url)
+          .then(res => this.setState({ headers: JSON.stringify(res.headers), body: JSON.stringify(res.body.results) }));
+        break;
+      default:
+        data = data ? JSON.parse(data) : console.error(data);
+        await superagent(method, url)
+          .send(data)
+          .then(res => this.setState({ headers: JSON.stringify(res.headers), body: JSON.stringify(res.body.results) }));
+    }
+
   }
 
   render() {
