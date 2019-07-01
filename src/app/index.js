@@ -13,7 +13,11 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.state = { history: localStorage['history'] };
+    this.state = { history: localStorage['history'] ? JSON.parse(localStorage['history']) : [] };
+  }
+
+  updateHistory = () => {
+    this.setState({ history: JSON.parse(localStorage['history']) });
   }
 
   render() {
@@ -26,11 +30,10 @@ class App extends React.Component {
           <aside>
             <h2>History</h2>
             <ul id="history">
-              <HistoryItem method="GET" url="swapi.co" path="/api/people" />
-              <HistoryItem method="GET" url="swapi.co" path="/api/starships" />
+              {this.state.history.map(item => <HistoryItem id={item.id} method={item.method} host={item.host} path={item.path} />)}
             </ul>
           </aside>
-          <ApiCall />
+          <ApiCall updateHistory={this.updateHistory} />
         </main>
         <Footer>
           <section>

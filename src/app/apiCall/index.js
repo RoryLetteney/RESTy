@@ -7,8 +7,8 @@ import AuthDiv from './authDiv';
 
 export default class ApiCall extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       headers: null,
@@ -41,16 +41,18 @@ export default class ApiCall extends React.Component {
     }
 
     const splitURL = url.split('//')[1].split('/');
-    let history = localStorage.getItem('history') || {};
+    let history = localStorage.getItem('history') || [];
     history = typeof history === 'string' ? JSON.parse(history) : history;
-    history[uuid()] = {
+    history.push({
+      id: uuid(),
       method,
       url,
       host:
         splitURL[0],
       path: '/' + splitURL.slice(1).join('/')
-    }
+    });
     localStorage['history'] = JSON.stringify(history);
+    this.props.updateHistory();
   };
 
 
