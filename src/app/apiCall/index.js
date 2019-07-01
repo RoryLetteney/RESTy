@@ -61,7 +61,7 @@ export default class ApiCall extends React.Component {
               <textarea placeholder="Raw JSON Body" name="requestBody"></textarea>
             </div>
             <div id="headers">
-              <button>Headers</button>
+              <button type="button">Headers</button>
               <AuthDiv className="visible-false" title="Basic Authorization">
                 <input name="authusername" placeholder="Username" />
                 <input name="authpassword" type="authpassword" placeholder="Password" />
