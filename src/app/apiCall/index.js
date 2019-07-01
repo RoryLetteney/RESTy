@@ -13,6 +13,7 @@ export default class ApiCall extends React.Component {
     this.state = {
       headers: null,
       body: null,
+      textareaDisabled: true
     };
   }
 
@@ -41,6 +42,14 @@ export default class ApiCall extends React.Component {
 
   }
 
+  textareaDisable = () => {
+    this.setState(state => state.textareaDisabled = true);
+  }
+
+  textareaEnable = () => {
+    this.setState(state => state.textareaDisabled = false);
+  }
+
   render() {
     return (
       <section className="deck">
@@ -48,17 +57,17 @@ export default class ApiCall extends React.Component {
           <section>
             <input type="text" className="wide" name="url" placeholder="URL" />
             <div id="methods">
-              <Method uniqueId={uuid()} type="GET" />
-              <Method uniqueId={uuid()} type="POST" />
-              <Method uniqueId={uuid()} type="PUT" />
-              <Method uniqueId={uuid()} type="PATCH" />
-              <Method uniqueId={uuid()} type="DELETE" />
+              <Method uniqueId={uuid()} type="GET" onClick={this.textareaDisable} />
+              <Method uniqueId={uuid()} type="POST" onClick={this.textareaEnable} />
+              <Method uniqueId={uuid()} type="PUT" onClick={this.textareaEnable} />
+              <Method uniqueId={uuid()} type="PATCH" onClick={this.textareaEnable} />
+              <Method uniqueId={uuid()} type="DELETE" onClick={this.textareaEnable} />
               <input type="submit" value="Go!" />
             </div>
           </section>
           <section className="deck col-2">
             <div id="body">
-              <textarea placeholder="Raw JSON Body" name="requestBody"></textarea>
+              <textarea placeholder="Raw JSON Body" name="requestBody" disabled={this.state.textareaDisabled ? "disabled" : ""}></textarea>
             </div>
             <div id="headers">
               <button type="button">Headers</button>
