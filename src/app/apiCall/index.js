@@ -13,7 +13,8 @@ export default class ApiCall extends React.Component {
     this.state = {
       headers: null,
       body: null,
-      textareaDisabled: true
+      textareaDisabled: true,
+      method: 'get'
     };
   }
 
@@ -43,7 +44,7 @@ export default class ApiCall extends React.Component {
     const splitURL = url.split('//')[1].split('/');
     let history = localStorage.getItem('history') || [];
     history = typeof history === 'string' ? JSON.parse(history) : history;
-    history.push({
+    history.unshift({
       id: uuid(),
       method,
       url,
@@ -57,11 +58,11 @@ export default class ApiCall extends React.Component {
 
 
   textareaDisable = () => {
-    this.setState(state => state.textareaDisabled = true);
+    this.setState(state => { state.textareaDisabled = true; state.method = 'get' });
   }
 
   textareaEnable = () => {
-    this.setState(state => state.textareaDisabled = false);
+    this.setState(state => { state.textareaDisabled = false; state.method = '' });
   }
 
   render() {
@@ -71,7 +72,7 @@ export default class ApiCall extends React.Component {
           <section>
             <input type="text" className="wide" name="url" placeholder="URL" />
             <div id="methods">
-              <Method uniqueId={uuid()} type="GET" onClick={this.textareaDisable} />
+              <Method uniqueId={uuid()} type="GET" onClick={this.textareaDisable} method={this.state.method} />
               <Method uniqueId={uuid()} type="POST" onClick={this.textareaEnable} />
               <Method uniqueId={uuid()} type="PUT" onClick={this.textareaEnable} />
               <Method uniqueId={uuid()} type="PATCH" onClick={this.textareaEnable} />

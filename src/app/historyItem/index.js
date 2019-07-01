@@ -5,7 +5,7 @@ import './styles.scss';
 export default ({ id, method, host, path }) => {
   return (
     <li key={id}>
-      <span>{method}</span>
+      <span>{method.toUpperCase()}</span>
       <span>{host}</span>
       <span>{path}</span>
     </li>
