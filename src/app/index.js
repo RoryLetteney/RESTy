@@ -30,7 +30,7 @@ class App extends React.Component {
           <aside>
             <h2>History</h2>
             <ul id="history">
-              {this.state.history.map(item => <HistoryItem id={item.id} method={item.method} host={item.host} path={item.path} />)}
+              {this.state.history.map(item => <HistoryItem key={item.id} method={item.method} host={item.host} path={item.path} />)}
             </ul>
           </aside>
           <ApiCall updateHistory={this.updateHistory} />

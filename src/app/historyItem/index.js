@@ -2,9 +2,9 @@ import React from 'react';
 
 import './styles.scss';
 
-export default ({ id, method, host, path }) => {
+export default ({ method, host, path }) => {
   return (
-    <li key={id}>
+    <li>
       <span>{method.toUpperCase()}</span>
       <span>{host}</span>
       <span>{path}</span>

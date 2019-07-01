@@ -57,12 +57,14 @@ export default class ApiCall extends React.Component {
   };
 
 
-  textareaDisable = () => {
-    this.setState(state => { state.textareaDisabled = true; state.method = 'get' });
+  textareaDisable = async () => {
+    await this.setState({ textareaDisabled: true, method: 'get' });
+    console.log(this.state.textareaDisabled);
   }
 
-  textareaEnable = () => {
-    this.setState(state => { state.textareaDisabled = false; state.method = '' });
+  textareaEnable = async () => {
+    await this.setState({ textareaDisabled: false, method: '' });
+    console.log(this.state.textareaDisabled);
   }
 
   render() {
