@@ -54,7 +54,7 @@ input.wide {
   display: flex;
   margin: 1rem 0;
 
-  button {
+  input[type=submit] {
     padding: 1px 6px;
   }
 }
@@ -109,4 +109,10 @@ textarea {
     font-size: 0.7rem;
     cursor: pointer;
   }
+}
+
+.response {
+  font-size: 0.7rem;
+  display: block;
+  max-width: 50vw;
 }
