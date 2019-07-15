@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import RestyProvider from '../context';
 
 import Header from './header';
 import Footer from './footer';
@@ -26,15 +27,17 @@ class App extends React.Component {
         <Header>
           <h1>RESTy</h1>
         </Header>
-        <main>
-          <aside>
-            <h2>History</h2>
-            <ul id="history">
-              {this.state.history.map(item => <HistoryItem key={item.id} method={item.method} host={item.host} path={item.path} />)}
-            </ul>
-          </aside>
-          <ApiCall updateHistory={this.updateHistory} />
-        </main>
+        <RestyProvider updateHistory={this.updateHistory}>
+          <main>
+            <aside>
+              <h2>History</h2>
+              <ul id="history">
+                {this.state.history.map(item => <HistoryItem key={item.id} method={item.method} host={item.host} path={item.path} />)}
+              </ul>
+            </aside>
+            <ApiCall />
+          </main>
+        </RestyProvider>
         <Footer>
           <section>
             <p>&copy;{new Date().getFullYear()} Code Fellows</p>
