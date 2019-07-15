@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import RestyProvider from '../context';
+// import RestyProvider from '../context';
+import { Provider } from 'react-redux';
+import store from '../store/reducer.js';
 
 import Header from './header';
 import Footer from './footer';
@@ -27,7 +29,8 @@ class App extends React.Component {
         <Header>
           <h1>RESTy</h1>
         </Header>
-        <RestyProvider updateHistory={this.updateHistory}>
+        {/* <RestyProvider updateHistory={this.updateHistory}> */}
+        <Provider store={store()} >
           <main>
             <aside>
               <h2>History</h2>
@@ -35,9 +38,10 @@ class App extends React.Component {
                 {this.state.history.map(item => <HistoryItem key={item.id} method={item.method} host={item.host} path={item.path} />)}
               </ul>
             </aside>
-            <ApiCall />
+            <ApiCall updateHistory={this.updateHistory} />
           </main>
-        </RestyProvider>
+        </Provider>
+        {/* </RestyProvider> */}
         <Footer>
           <section>
             <p>&copy;{new Date().getFullYear()} Code Fellows</p>
