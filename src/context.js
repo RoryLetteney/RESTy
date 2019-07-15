@@ -1,5 +1,4 @@
 import React from 'react';
-import superagent from 'superagent';
 import uuid from 'uuid';
 
 export const RestyContext = React.createContext();
@@ -33,14 +32,15 @@ export default class RestyProvider extends React.Component {
 
     switch (method) {
       case 'get':
-        await superagent(method, url)
-          .then(res => this.setState({ headers: JSON.stringify(res.headers), body: JSON.stringify(res.body.results) }));
+        await fetch(url)
+          .then(res => { this.setState(state => { return { ...state, headers: JSON.stringify(res.headers) } }); return res.json(); })
+          .then(res => { console.log(res); return this.setState(state => { return { ...state, body: JSON.stringify(res.results) } }); });
         break;
       default:
         data = data ? JSON.parse(data) : console.error(data);
-        await superagent(method, url)
-          .send(data)
-          .then(res => this.setState({ headers: JSON.stringify(res.headers), body: JSON.stringify(res.body.results) }));
+        await fetch(url, { method, body: data })
+          .then(res => { this.setState(state => { return { ...state, headers: JSON.stringify(res.headers) } }); return res.json(); })
+          .then(res => { console.log(res); return this.setState(state => { return { ...state, body: JSON.stringify(res.results) } }); });
     }
 
     const splitURL = url.split('//')[1].split('/');
