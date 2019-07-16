@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 // import RestyProvider from '../context';
 import { Provider } from 'react-redux';
-import store from '../store/reducer.js';
+import createStore from '../store/reducer.js';
 
 import Header from './header';
 import Footer from './footer';
@@ -10,6 +10,7 @@ import HistoryItem from './historyItem';
 import ApiCall from './apiCall';
 
 import './styles.scss';
+const store = createStore();
 
 class App extends React.Component {
 
@@ -30,7 +31,7 @@ class App extends React.Component {
           <h1>RESTy</h1>
         </Header>
         {/* <RestyProvider updateHistory={this.updateHistory}> */}
-        <Provider store={store()} >
+        <Provider store={store} >
           <main>
             <aside>
               <h2>History</h2>
